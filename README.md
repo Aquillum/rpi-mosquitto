@@ -2,6 +2,7 @@ rpi-mosquitto
 ================
 
 Docker image for Mosquitto. A lightweight MQTT broker for Raspberry Pi based on Arm Alpine Linux.
+Inspired by https://github.com/toke/docker-mosquitto
 
 ## Run
 
