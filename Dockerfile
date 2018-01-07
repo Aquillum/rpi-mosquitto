@@ -4,7 +4,8 @@ MAINTAINER Raymond Mouthaan <raymondmmouthaan@gmail.com>
 
 ENV MOSQUITTO_VERSION 1.4.12-r0
 
-RUN apk add --no-cache mosquitto
+RUN apk update && apk upgrade
+RUN apk add mosquitto
 RUN mkdir -p /mosquitto/config /mosquitto/data /mosquitto/log && chown mosquitto:mosquitto /mosquitto/*
 
 COPY config /mosquitto/config
