@@ -14,7 +14,6 @@ script:
   popd
 # build image
 - docker build -t raymondmm/rpi-mosquitto:build .
-- echo $VERSION
 # test image
 - docker run raymondmm/rpi-mosquitto:build uname -a
 # push image

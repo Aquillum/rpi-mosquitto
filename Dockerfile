@@ -6,7 +6,6 @@ ENV MOSQUITTO_VERSION 1.4.14-r3
 
 RUN apk update && apk upgrade
 RUN apk add mosquitto
-RUN export VERSION='apk info mosquitto -d | grep mosquitto | sed "s/^.*mosquitto-\([^ d]*\).*/\1/"'
 RUN mkdir -p /mosquitto/config /mosquitto/data /mosquitto/log && chown mosquitto:mosquitto /mosquitto/*
 
 COPY config /mosquitto/config
