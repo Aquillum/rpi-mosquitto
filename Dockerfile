@@ -1,6 +1,7 @@
 # Pull the base image
-FROM raymondmm/pi-alpine:3.7
+FROM raymondmm/rpi-alpine:3.7
 MAINTAINER Raymond Mouthaan <raymondmmouthaan@gmail.com>
+
 ENV MOSQUITTO_VERSION 1.4.12-r0
 
 RUN apk add --no-cache mosquitto
