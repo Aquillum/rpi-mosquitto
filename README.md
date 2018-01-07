@@ -1,5 +1,7 @@
 rpi-mosquitto
 ================
+[![Build Status](https://travis-ci.org/RaymondMouthaan/rpi-alpine.svg?branch=master)](https://travis-ci.org/RaymondMouthaan/rpi-mosquitto)
+[![This image on DockerHub](https://img.shields.io/docker/pulls/raymondmm/rpi-mosquitto.svg)](https://hub.docker.com/r/raymondmm/rpi-mosquitto/)
 
 Docker image for Mosquitto. A lightweight MQTT broker for Raspberry Pi based on Arm Alpine Linux.
 Inspired by https://github.com/toke/docker-mosquitto
