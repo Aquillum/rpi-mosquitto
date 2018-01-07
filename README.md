@@ -51,3 +51,9 @@ Create a named volume:
 Now it can be attached to docker by using `-v mosquitto_data:/mosquitto` in the
 Example above. Be aware that the permissions within the volumes
 are most likely too restrictive.
+
+### Local time and time zone
+
+Bind host /etc/localtime and /etc/timezone with the container too sync time and time zone:
+
+    docker volume create ... -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/TZ:ro ...
