@@ -1,0 +1,28 @@
+sudo: required
+services:
+- docker
+language: bash
+script:
+# prepare qemu
+- docker run --rm --privileged multiarch/qemu-user-static:register --reset
+# get qemu-arm-static binary
+- mkdir tmp
+- >
+  pushd tmp &&
+  curl -L -o qemu-arm-static.tar.gz https://github.com/multiarch/qemu-user-static/releases/download/v2.9.1-1/qemu-arm-static.tar.gz &&
+  tar xzf qemu-arm-static.tar.gz &&
+  popd
+# build image
+- docker build -t raymondmm/rpi-mosquitto:build .
+# test image
+- docker run raymondmm/rpi-mosquitto:build uname -a
+# push image
+- >
+  if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+    TAG=$(grep "MOSQUITTO_VERSION " Dockerfile | sed 's/.*VERSION //')
+    docker tag raymondmm/rpi-mosquitto:build raymondmm/rpi-mosquitto:$TAG
+    docker tag raymondmm/rpi-mosquitto:build raymondmm/rpi-mosquitto:latest
+    docker push raymondmm/rpi-mosquitto:$TAG
+    docker push raymondmm/rpi-mosquitto:latest
+  fi
